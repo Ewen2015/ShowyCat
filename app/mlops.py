@@ -107,13 +107,13 @@ with col2:
         
         if col_model1:
             with col31:
-                st.metric(col_model1, list_metrics[0])
+                st.metric("RMSE of "+col_model1, list_metrics[0])
         if col_model2:
             with col32:
-                st.metric(col_model2, list_metrics[1], round(list_metrics[1]-list_metrics[0], 2))
+                st.metric("RMSE of "+col_model2, list_metrics[1], round(list_metrics[1]-list_metrics[0], 2))
         if col_model3:
             with col33:
-                st.metric(col_model3, list_metrics[2], round(list_metrics[2]-list_metrics[0], 2))
+                st.metric("RMSE of "+col_model3, list_metrics[2], round(list_metrics[2]-list_metrics[0], 2))
 
         st.write("### 🌸 Prediction chart")
         df_model = df[list_models]
