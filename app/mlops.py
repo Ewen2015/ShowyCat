@@ -14,6 +14,7 @@ import plotly.express as px
 import streamlit as st
 
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error
 
 st.set_page_config(
      page_title="MLOps",
@@ -58,7 +59,7 @@ with col1:
 
         list_models = []
         list_errors = []
-        list_metrics = []
+        list_rmse = []
 
         if col_target:
             list_models.append(col_target)
@@ -71,7 +72,7 @@ with col1:
 
                 mse_model1 = mean_squared_error(df[col_target], df[col_model1])
                 rmse_model1 = round(np.sqrt(mse_model1), 2)
-                list_metrics.append(rmse_model1)
+                list_rmse.append(rmse_model1)
 
             if col_model2:
                 col_error2 = "ERROR_" + col_model2
@@ -81,7 +82,7 @@ with col1:
 
                 mse_model2 = mean_squared_error(df[col_target], df[col_model2])
                 rmse_model2 = round(np.sqrt(mse_model2), 2)
-                list_metrics.append(rmse_model2)
+                list_rmse.append(rmse_model2)
 
             if col_model3:
                 col_error3 = "ERROR_" + col_model3
@@ -91,7 +92,7 @@ with col1:
 
                 mse_model3 = mean_squared_error(df[col_target], df[col_model3])
                 rmse_model3 = round(np.sqrt(mse_model3), 2)
-                list_metrics.append(rmse_model3)
+                list_rmse.append(rmse_model3)
 
         st.dataframe(df)
 
@@ -107,13 +108,13 @@ with col2:
         
         if col_model1:
             with col31:
-                st.metric("RMSE of "+col_model1, list_metrics[0])
+                st.metric("RMSE of "+col_model1, list_rmse[0])
         if col_model2:
             with col32:
-                st.metric("RMSE of "+col_model2, list_metrics[1], round(list_metrics[1]-list_metrics[0], 2))
+                st.metric("RMSE of "+col_model2, list_rmse[1], round(list_rmse[1]-list_rmse[0], 2))
         if col_model3:
             with col33:
-                st.metric("RMSE of "+col_model3, list_metrics[2], round(list_metrics[2]-list_metrics[0], 2))
+                st.metric("RMSE of "+col_model3, list_rmse[2], round(list_rmse[2]-list_rmse[0], 2))
 
         st.write("### 🌿 Prediction chart")
         df_model = df[list_models]
