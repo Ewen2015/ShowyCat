@@ -101,7 +101,7 @@ with col2:
     # colors = ["#DB444B", "#006BA2", "#379A8B", "#3EBCD2", "#EBB434", "#B4BA39", "#9A607F", "#D1B07"]
 
     if uploaded_file :
-        st.write("### 🌼 Key Performance Index")
+        st.write("### 🌱 Key Performance Index")
         st.write("**RMSE**: (the root mean square error) measures the average difference between a statistical model's predicted values and the actual values.")
         col31, col32, col33 = st.columns(spec=3, gap="medium")
         
@@ -115,7 +115,7 @@ with col2:
             with col33:
                 st.metric("RMSE of "+col_model3, list_metrics[2], round(list_metrics[2]-list_metrics[0], 2))
 
-        st.write("### 🌸 Prediction chart")
+        st.write("### 🌿 Prediction chart")
         df_model = df[list_models]
 
         # fig_model = px.line(df_model, color_discrete_sequence=colors)
@@ -127,7 +127,7 @@ with col2:
         # st.plotly_chart(fig_model, use_container_width=True)
         st.line_chart(df_model)
 
-        st.write("### 🌻 Model error analysis")
+        st.write("### 🍁 Model error analysis")
         df_error = df[list_errors]
 
         # fig_error = px.area(df_error, color_discrete_sequence=colors)
